@@ -2,33 +2,19 @@
 class Model_Dao_Xmlrpc_Default extends Model_Dao_Xmlrpc_Abstract {
 
     static protected $_clientaddress = 'http://www.domainname.nl/xmlrpc';
+    
     /**
-     *
+     *  Voor debuggen is dit een goeie:
+     *  return self::$_xmlrpcClient->getLastResponse();
+     * 
+     * 
      * @param string $tablename
      * @param struct $options
      * @return struct
      */
     public function search($tablename,$options) {
-
-        //try {
-            return self::$_xmlrpcClient->call('dao.search', array($tablename, $options));
-        //} catch (Zend_XmlRpc_Exception $e) {
-        //    echo $e->getCode().': '.$e->getMessage()."\n";
-        //    print_r(self::$_xmlrpcClient->getLastRequest());
-        //    print_r(self::$_xmlrpcClient->getLastResponse());
-        //    print_r($tablename);
-        //    print_r($options);
-        //    exit();
-        //} catch (Zend_XmlRpc_Fault $e) {
-        //    echo $e->getCode().': '.$e->getMessage()."\n";
-        //    print_r(self::$_xmlrpcClient->getLastRequest());
-        //    print_r(self::$_xmlrpcClient->getLastResponse());
-        //    print_r($tablename);
-        //    print_r($options);
-        //    exit();
-        //}
-        // Voor debuggen is dit ook een goeie:
-        //return self::$_xmlrpcClient->getLastResponse();
+        return self::$_xmlrpcClient->call('dao.search', array($tablename, $options));
+        
     }
 
     public function getEigDomeinReferenceTypeEigDomein($domeinId) {

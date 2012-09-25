@@ -1,25 +1,8 @@
 <?php
 abstract class Model_Pack_Abstract implements Iterator, Countable {
-        /*
-     * bij foreach (iterator):
-     *
-     * rewind
-     * valid
-     * current
-     * key
-     * execute foreach loop
-     *
-     * next
-     * valid
-     * current
-     * key
-     * execute foreach loop
-     *
-     * next
-     * valid stopt als false
-     *
-     */
+    
     protected $_position = 0;
+    
     protected $_count;
     /**
      *
@@ -39,7 +22,6 @@ abstract class Model_Pack_Abstract implements Iterator, Countable {
         if ($mapper != null) {
             $this->_mapper = $mapper;
         }
-
     }
 
     protected function _checkModelNaam($modelnaam) {
@@ -51,15 +33,22 @@ abstract class Model_Pack_Abstract implements Iterator, Countable {
         }
     }
 
+    /**
+     * 
+     * @return int
+     */
     public function count()
     {
         if (null === $this->_count) {
             $this->_count = count($this->_resultSet);
         }
-        //print_r(__METHOD__.' result: '.$this->_count.'  ');
         return $this->_count;
     }
-
+    
+    /**
+     * 
+     * @return Model_Abstract
+     */
     public function current()
     {
         $key = key($this->_resultSet);
@@ -84,29 +73,21 @@ abstract class Model_Pack_Abstract implements Iterator, Countable {
 
     public function key()
     {
-        //return $this->_position;
-        //Matthew:
         return key($this->_resultSet);
     }
 
     public function next()
     {
         return next($this->_resultSet);
-        //return $this->resultSet[$this->_position];
-        //Matthew: return next($this->_resultSet);
     }
 
     public function rewind()
     {
-        //$this->_position = 0;
-        //Matthew:
         return reset($this->_resultSet);
     }
 
     public function valid()
     {
-        //return array_key_exists($this->_resultSet, $this->_position);
-        // of zonder position:
         return !is_null(key($this->_resultSet));
     }
 }

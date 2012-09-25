@@ -43,6 +43,7 @@ abstract class Model_Dao_Tabledefinition_Abstract implements Model_Dao_Interface
 
     /**
      *
+     * @param string $dbnaam
      * @return Zend_Db_Adapter_Pdo_Mysql
      */
     public function getDb($dbnaam = null) {
@@ -51,14 +52,21 @@ abstract class Model_Dao_Tabledefinition_Abstract implements Model_Dao_Interface
         }
         return $this->getTable('Eig_Domein',$dbnaam)->getAdapter();
     }
-
+    
+    /**
+     * Set the db
+     * 
+     * @param Zend_Db_Adapter_Pdo_Mysql $db
+     */
     public function setDb($db) {
         if ($db instanceof Zend_Db_Adapter_Pdo_Mysql) {
             self::$_db = $db;
         }
     }
     /**
-     *
+     * Fetch all records from one table.
+     * Some options for simple selections too.
+     * 
      * @param string $tablename
      * @param struct | null $options
      * @return array
@@ -102,7 +110,6 @@ abstract class Model_Dao_Tabledefinition_Abstract implements Model_Dao_Interface
             }
         }
         if ($tablename === 'Eig_Element'){
-        //print_r($select->__toString());exit();
         }
         return $table->fetchAll($select)->toArray();
     }

@@ -5,7 +5,6 @@ extends Zend_Application_Resource_ResourceAbstract {
     protected $_router;
 
     public function init() {
-        //print_r($this->_getRouter());exit();
         return $this->_getRouter();
     }
 
@@ -70,12 +69,7 @@ extends Zend_Application_Resource_ResourceAbstract {
                         'controller'=>'pagina',
                         'action'=>$pagina['type-eig-pagina'],
                         'domeinid'=>$domeinId,
-                        //'domein'=>$pagina['eig-domein'],
-                        //'domeintypeid'=>$pagina['type-eig-domein-id'],
-                        //'domeintype'=>$pagina['type-eig-domein'],
                         'paginaid'=>$pagina['eig-pagina-id'],
-                        //'paginatypeid'=>$pagina['type-eig-pagina-id'],
-                        //'paginatype'=>$pagina['type-eig-pagina']
                     ));
             $routename = 'id'.$pagina['eig-pagina-id'];
             $paginaRouters[$routename] = $paginaRouter;

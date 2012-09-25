@@ -1,7 +1,9 @@
 <?php
+/**
+ * 
+ */
 class Model_Mapper_Default extends Model_Mapper_Abstract {
     
-    //de classes find en fetchAll uit abstract zijn leeg.
     public function find($id) {}
 
     public function fetchAll() {
